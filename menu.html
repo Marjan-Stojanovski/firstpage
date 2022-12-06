@@ -153,29 +153,15 @@
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody class="tablecart">
-                                                                        <tr>
-                                                                            <td class="quantity">2 x</td>
-                                                                            <td class="product"><a href="shop-product.html">Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
-                                                                            <td class="amount">$199.00</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="quantity">3 x</td>
-                                                                            <td class="product"><a href="shop-product.html">Android 4.2 Tablet</a><span class="small">7.3" Quad Core 2GB</span></td>
-                                                                            <td class="amount">$299.00</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="quantity">3 x</td>
-                                                                            <td class="product"><a href="shop-product.html">Desktop PC</a><span class="small">Quad Core 3.2MHz, 8GB RAM, 1TB Hard Disk</span></td>
-                                                                            <td class="amount">$1499.00</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="total-quantity" colspan="2">Total 8 Items</td>
-                                                                            <td class="total-amount">$1997.00</td>
-                                                                        </tr>
+
                                                                         </tbody>
+                                                                        <tr>
+                                                                            <td class="quantity"></td>
+                                                                            <td class="product"><strong>TOTAL</strong></td>
+                                                                            <td class="amount">100</td>
+                                                                        </tr>`;
                                                                     </table>
                                                                     <div class="panel-body text-right">
-                                                                        <a href="shop-cart.html" class="btn btn-group btn-gray btn-sm">View Cart</a>
                                                                         <a href="shop-checkout.html" class="btn btn-group btn-gray btn-sm">Checkout</a>
                                                                     </div>
                                                                 </li>
@@ -948,7 +934,7 @@
     <script type="text/javascript" src="plugins/owl-carousel/owl.carousel.js"></script>
     <!-- SmoothScroll javascript -->
     <script type="text/javascript" src="plugins/jquery.browser.js"></script>
-    <script type="text/javascript" src="plugins/SmoothScroll.js"></script>
+    <script type="text/javascript" src="plugins/SmoothScroll1.js"></script>
     <!-- Initialization of Plugins -->
     <script type="text/javascript" src="js/template.js"></script>
     <!-- Custom Scripts -->
@@ -957,17 +943,42 @@
 <script>
     $(document).ready(function () {
 
-let id = 0;
+
         $('.addtocart').on(`click`, function (e) {
 
-id++;
+            let id = 1;
+            id++;
+
+            let findMainDiv = $(this).parentsUntil("div.row")[3];
 
 
-            let edCena = $("span.price");
-            let edinecnaCena = $(edCena).text();
 
+            let temp1 = $(findMainDiv).children()[0];
+            let tempImg = $(temp1).children()[0];
+            let tempImg2 = $(tempImg).children()[1];
+            let imageSrc = $(tempImg2).attr("href");
+            let ed1Cena = $(temp1).children()[1];
 
-            console.log(edinecnaCena);
+            let tempDesc = $(ed1Cena).children()[0];
+            let temp1Desc = $(tempDesc).children()[0];
+            let desc = $(temp1Desc).text();
+
+            let ed2Cena = $(ed1Cena).children()[2];
+            let cena = $(ed2Cena).children()[0];
+            let cenaProduct = $(cena).text();
+
+            let tempProduct = {
+                id: id,
+                desc: desc,
+                image: imageSrc,
+                price: cenaProduct,
+                quantity: 1,
+            };
+
+            console.log(desc);
+            console.log(cenaProduct);
+            console.log(tempProduct);
+
 
 
 
@@ -981,8 +992,8 @@ id++;
 
             let tempDiv = `<tr>
                                <td class="quantity">2 x</td>
-                               <td class="product"><a>Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
-                               <td class="amount">$199.00</td>
+                               <td class="product"><a>${desc}</a></td>
+                               <td class="amount">${cenaProduct}</td>
                            </tr>`;
 
             $('.tablecart').prepend(tempDiv);

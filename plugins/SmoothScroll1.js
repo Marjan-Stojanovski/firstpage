@@ -315,7 +315,7 @@
                 }
                 
                 scrollArray(overflowing, -deltaX, -deltaY);
-                event.preventDefault();
+                // event.preventDefault();
             }
 
             /**
@@ -386,7 +386,7 @@
                 }
 
                 scrollArray(elem, x, y);
-                event.preventDefault();
+                // event.preventDefault();
             }
 
             /**
